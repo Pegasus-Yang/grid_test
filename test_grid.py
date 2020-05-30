@@ -2,8 +2,10 @@
 @Author:Pegasus-Yang
 @Time: 2020/5/30 上午9:42
 """
+import os
 from time import sleep
 
+import pytest
 from selenium.webdriver import DesiredCapabilities
 from selenium.webdriver import Remote
 from selenium.webdriver.common.by import By
@@ -11,7 +13,17 @@ from selenium.webdriver.common.by import By
 
 class TestGrid:
     selenium_grid_url = "http://127.0.0.1:4444/wd/hub"
-    capabilities = DesiredCapabilities.CHROME.copy()
+
+    def setup(self):
+        browser = os.getenv('browser', default='Chrome')
+        if browser == 'Chrome':
+            self.capabilities = DesiredCapabilities.CHROME.copy()
+        elif browser == 'Firefox':
+            self.capabilities = DesiredCapabilities.FIREFOX.copy()
+        elif browser == 'IE':
+            self.capabilities = DesiredCapabilities.INTERNETEXPLORER.copy()
+        elif browser == 'Edge':
+            self.capabilities = DesiredCapabilities.EDGE.copy()
 
     def test_a(self):
         driver = Remote(command_executor=self.selenium_grid_url, desired_capabilities=self.capabilities)
