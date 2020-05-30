@@ -16,6 +16,7 @@ class TestGrid:
 
     def setup(self):
         browser = os.getenv('browser', default='Chrome')
+        print(browser)
         if browser == 'Chrome':
             self.capabilities = DesiredCapabilities.CHROME.copy()
         elif browser == 'Firefox':
