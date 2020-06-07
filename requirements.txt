@@ -1,4 +1,7 @@
+allure-pytest==2.8.16
+allure-python-commons==2.8.16
 apipkg==1.5
+Appium-Python-Client==1.0.1
 attrs==19.3.0
 execnet==1.7.1
 more-itertools==8.3.0

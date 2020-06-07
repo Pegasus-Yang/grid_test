@@ -5,7 +5,6 @@
 import os
 from time import sleep
 
-import pytest
 from selenium.webdriver import DesiredCapabilities
 from selenium.webdriver import Remote
 from selenium.webdriver.common.by import By
@@ -28,6 +27,7 @@ class TestGrid:
 
     def test_a(self):
         driver = Remote(command_executor=self.selenium_grid_url, desired_capabilities=self.capabilities)
+        driver.maximize_window()
         driver.get('https://www.baidu.com')
         driver.implicitly_wait(5)
         sleep(1)
@@ -40,6 +40,7 @@ class TestGrid:
 
     def test_b(self):
         driver = Remote(command_executor=self.selenium_grid_url, desired_capabilities=self.capabilities)
+        driver.maximize_window()
         driver.get('https://www.baidu.com')
         driver.implicitly_wait(5)
         sleep(1)
@@ -52,6 +53,7 @@ class TestGrid:
 
     def test_c(self):
         driver = Remote(command_executor=self.selenium_grid_url, desired_capabilities=self.capabilities)
+        driver.maximize_window()
         driver.get('https://www.baidu.com')
         driver.implicitly_wait(5)
         sleep(1)
