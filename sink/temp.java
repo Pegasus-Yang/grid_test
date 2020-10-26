@@ -71,7 +71,7 @@ public class temp {
     }
 
     public static void main(String[] args) {
-        System.out.print(Arrays.toString(args));
+//        System.out.print(Arrays.toString(args));
         String url = args[0];
         String method = args[1];
         int i = 2;
