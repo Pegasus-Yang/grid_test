@@ -2,6 +2,7 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 
 public class temp {
     public static String get(String url_str) {
@@ -53,7 +54,7 @@ public class temp {
 //            outputStream.flush();
             outputStream.close();
             InputStream inputStream = connection.getInputStream();
-            byte[] data = new byte[1024];
+            byte[] data = new byte[512];
             ByteArrayOutputStream messagea = new ByteArrayOutputStream();
             int len = 0;
             while ((len = inputStream.read(data)) != -1) {
@@ -70,24 +71,23 @@ public class temp {
     }
 
     public static void main(String[] args) {
+        System.out.print(Arrays.toString(args));
         String url = args[0];
         String method = args[1];
         int i = 2;
         String result = "";
         while (i < args.length) {
-            System.out.print(args[i]);
-//            String[] kv = args[i].split("=");
-            if (i > 2) {
-                result = result + "&" + args[i];
+            if (i >= 4) {
+                result = result + "&" + args[i].replace("-", "") + "=" + args[i + 1];
             } else {
-                result = "?"+args[i];
+                result = "?" + args[i].replace("-", "") + "=" + args[i + 1];
             }
-            i++;
+            i += 2;
         }
         if (method.equals("get")) {
-            System.out.println(temp.get(url + result));
-        }else if(method.equals("post")) {
-            System.out.println(temp.post(url + result));
+            System.out.print(temp.get(url + result));
+        } else if (method.equals("post")) {
+            System.out.print(temp.post(url + result));
         }
     }
 }
