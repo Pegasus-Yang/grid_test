@@ -1,5 +1,0 @@
-jar -cvf temp.jar temp.class
-dx --dex --output=classes.dex temp.jar
-aapt add run.jar classes.dex
-adb push run.jar /sdcard/Download/
-adb shell dalvikvm -classpath /sdcard/Download/run.jar Test
